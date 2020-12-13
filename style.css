@@ -21,6 +21,11 @@
     src: url(fonts/Lato-Regular.ttf);
 }
 
+@font-face {
+    font-family: Comic Sans MS;
+    src: url(fonts/Comic\ Sans\ MS.ttf);
+}
+
 /* LAYOUT */
 
 .container {
