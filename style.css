@@ -13,10 +13,10 @@
 
 /* FONTS */
 
-/* @font-face {
-    font-family: Impact;
+@font-face {
+    font-family: ImpactFont;
     src: url(/fonts/impact.ttf);
-} */
+}
 
 
 /* LAYOUT */
@@ -30,7 +30,7 @@
 /* BASICS */
 
 body {
-    font-family: Impact;
+    font-family: ImpactFont;
     margin: 0;
     background-color: var(--lightGrey);
 }
@@ -78,7 +78,7 @@ img {
 }
 
 .logo {
-    font-family: Impact;
+    font-family: ImpactFont;
     cursor: pointer;
 }
 

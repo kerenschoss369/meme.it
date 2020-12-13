@@ -51,7 +51,7 @@ function createLine(kind = 'regular') {
         txt,
         fontSize: 24,
         txtColor: 'white',
-        fontFamily: 'Impact',
+        fontFamily: 'ImpactFont',
         strokeColor: 'black',
         textAlign: 'center',
         x,
