@@ -14,7 +14,7 @@
 /* FONTS */
 
 @font-face {
-    font-family: ImpactFont;
+    font-family: Impact;
     src: url(/fonts/impact.ttf);
 }
 
@@ -30,7 +30,7 @@
 /* BASICS */
 
 body {
-    font-family: ImpactFont;
+    font-family: Impact;
     margin: 0;
     background-color: var(--lightGrey);
 }
@@ -78,7 +78,7 @@ img {
 }
 
 .logo {
-    font-family: ImpactFont;
+    font-family: Impact;
     cursor: pointer;
 }
 
@@ -341,6 +341,7 @@ transition: .3s;
         flex-wrap: wrap;
     }
 }
+
 
 /* HELPERS */
 
