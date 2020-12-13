@@ -89,13 +89,14 @@
                     <input type="color" oninput="onChangeTextColor(this.value)" id="head" name="head" value="#ffffff">
                 </div>
             </div>
-            <div class="tools-row flex align-center space-between"></div>
+            <div class="tools-row flex align-center justify-center space-between">
             <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
                 <input class="d-none" name="img" id="imgData" type="hidden" />
                 <button class="btn" type="submit">Publish</button>
                 <a href="#" class="share-download-btn btn" onmousedown="onDrawForDownLoad()" onclick="onDownloadImg(this)" onmouseup="onDrawAfterDownload()" download="my-img.jpg">Download</a>
                 <div class="share-container"></div>
             </form>
+        </div>
         </aside>
     </main>
 
