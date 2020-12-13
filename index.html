@@ -39,7 +39,7 @@
     </main>
 
     <!-- MEME EDITOR -->
-    <main class="meme-editor-container container d-none">
+    <main class="meme-editor-container container d-none flex justify-center">
         <section class="canvas-container">
             <!-- <img class="d-none bg-img" src="" alt="img-bg" /> -->
             <canvas class="canvas" width="800px" height="800px">
@@ -64,7 +64,7 @@
                 <img class="tool" src="icons/align-to-center.png" onclick="onChangeAlign( 'center')" alt="align-center" />
                 <img class="tool" src="icons/align-to-right.png" onclick="onChangeAlign( 'right')" alt="align-right" />
             </div>
-            <div class="tools-row flex space-between">
+            <div class="tools-row flex justify-center">
                 <select class="font-family" oninput="onChangeFontFamily(this.value)">
                     <option value="Impact">Impact</option>
                     <option value="Arial">Arial</option>
@@ -79,13 +79,13 @@
                 <!-- <img class="tool" src="icons/text-color.png" alt="text-color" /> -->
 
             </div>
-            <div class="tools-row flex column">
-                <div class="flex">
-                    <label>stroke color</label>
+            <div class="tools-row flex column justify-center ">
+                <div class="flex justify-center">
+                    <label class="change-color-title  stroke-color-title">Stroke Color:</label>
                     <input type="color" oninput="onChangeStrokeColor(this.value)" id="head" name="head" value="#000000">
                 </div>
-                <div class="flex">
-                    <label>Text color</label>
+                <div class="flex justify-center">
+                    <label class="change-color-title">Text Color:</label>
                     <input type="color" oninput="onChangeTextColor(this.value)" id="head" name="head" value="#ffffff">
                 </div>
             </div>

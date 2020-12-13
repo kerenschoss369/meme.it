@@ -15,7 +15,7 @@
 
 @font-face {
     font-family: Impact;
-    src: url(/fonts/impact.ttf);
+    src: url(fonts/impact.ttf);
 }
 
 
@@ -200,9 +200,13 @@ transition: .3s;
 }
 
 .tools-container {
-    margin: 10px;
+    margin: 15px;
     color: #555454;
     font-weight: bold;
+    padding: 15px;
+    border-radius: 10px;
+    border: 5px solid var(--darkGrey);
+    background-color: var(--lightGrey);
 }
 
 .tools-row {
@@ -213,18 +217,27 @@ transition: .3s;
     cursor: pointer;
     height: 30px;
     width: 30px;
-    border-radius: 3px;
-    border: 3px solid white;
+    margin-right: 10px;
 }
 
+.txt-line{
+    padding: 12px;
+    width: 100%;
+}
+
+.change-color-title{
+    margin-right: 15px;
+}
+
+.stroke-color-title{
+    margin-bottom: 15px;
+}
 .stroke-color {
     padding: 6px 12px;
     font-weight: bold;
-    /* transition: .3s; */
     border: none;
     background-color: #fff;
     border-radius: 3px;
-    /* border: 3px solid white; */
     background: url("/icons/text-stroke.png");
 }
 
@@ -305,8 +318,19 @@ transition: .3s;
         cursor: pointer;
         outline: none;
     }
+    .meme-editor-container{
+        align-items: center;
+    }
+    .canvas-container{
+        width:70vw;
+    }
     .canvas{
-        width:100vw;
+        width: 100%;
+    margin-right: 0;
+    }
+    .tools-container{
+        width: 70vw;
+        margin-right: 0;
     }
     .close-menu {
         margin: 30px 0;
