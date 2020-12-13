@@ -185,12 +185,12 @@ function changeText(txt) {
 function changeAlign(side) {
     var width = gElCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt).width;
     if (side === 'left') {
-        if (gMeme.lines[gMeme.selectedLineIdx].x <= 30) return;
+        if (gMeme.lines[gMeme.selectedLineIdx].x <= 50) return;
         gMeme.lines[gMeme.selectedLineIdx].x = 50 + width / 2;
     } else if (side === 'center') {
         gMeme.lines[gMeme.selectedLineIdx].x = gElCanvas.width / 2;
     } else {
-        if (gMeme.lines[gMeme.selectedLineIdx].x >= gElCanvas.height - 30) return;
+        if (gMeme.lines[gMeme.selectedLineIdx].x >= gElCanvas.height - 50) return;
         gMeme.lines[gMeme.selectedLineIdx].x = gElCanvas.width - (50 + width / 2);
 
     }

@@ -64,8 +64,8 @@
                 <img class="tool" src="icons/align-to-center.png" onclick="onChangeAlign( 'center')" alt="align-center" />
                 <img class="tool" src="icons/align-to-right.png" onclick="onChangeAlign( 'right')" alt="align-right" />
             </div>
-            <div class="tools-row flex justify-center">
-                <select class="font-family" oninput="onChangeFontFamily(this.value)">
+            <div class="select-container tools-row flex justify-center">
+                <select class="font-family select" oninput="onChangeFontFamily(this.value)">
                     <option value="Impact">Impact</option>
                     <option value="Arial">Arial</option>
                     <option value="David">David</option>
@@ -75,25 +75,23 @@
                     <option value="Segoe UI Black">Segoe UI Black</option>
                     <option value="Showcard Gothic">Showcard Gothic</option>
                   </select>
-                <!-- <img class="tool" type="color" src="icons/text-stroke.png" alt="text-stroke" /> -->
-                <!-- <img class="tool" src="icons/text-color.png" alt="text-color" /> -->
-
+                  <div class="select_arrow"></div>
             </div>
             <div class="tools-row flex column justify-center ">
                 <div class="flex justify-center">
-                    <label class="change-color-title  stroke-color-title">Stroke Color:</label>
+                    <label class="change-color-title  stroke-color-title">Stroke Color</label>
                     <input type="color" oninput="onChangeStrokeColor(this.value)" id="head" name="head" value="#000000">
                 </div>
                 <div class="flex justify-center">
-                    <label class="change-color-title">Text Color:</label>
+                    <label class="change-color-title">Text Color</label>
                     <input type="color" oninput="onChangeTextColor(this.value)" id="head" name="head" value="#ffffff">
                 </div>
             </div>
-            <div class="tools-row flex align-center justify-center space-between">
-            <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+            <div class="tools-row">
+            <form class="share-form flex column align-center justify-center space-between" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
                 <input class="d-none" name="img" id="imgData" type="hidden" />
-                <button class="btn" type="submit">Publish</button>
-                <a href="#" class="share-download-btn btn" onmousedown="onDrawForDownLoad()" onclick="onDownloadImg(this)" onmouseup="onDrawAfterDownload()" download="my-img.jpg">Download</a>
+                <button class="btn publish-btn" type="submit">Publish</button>
+                <a href="#" class="share-download-btn btn center-text" onmousedown="onDrawForDownLoad()" onclick="onDownloadImg(this)" onmouseup="onDrawAfterDownload()" download="my-img.jpg">Download</a>
                 <div class="share-container"></div>
             </form>
         </div>
