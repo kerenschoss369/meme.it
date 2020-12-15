@@ -8,18 +8,6 @@ var gIsmovingTxt = false;
 var gIsTxt = true;
 
 function findClickedLine(x, y) {
-    console.log('x', x);
-    console.log('y', y);
-    console.log('width', getLineWidth(gMeme.lines[1]));
-    console.log('heigth', getLineHeight(gMeme.lines[0]));
-    console.log('line x:', gMeme.lines[1].x);
-    console.log('line y:', gMeme.lines[1].y);
-    console.log(`canvas width ${gElCanvas.width}`);
-    console.log(`canvas height ${gElCanvas.height}`);
-    console.log(`y < gElCanvas.height - (gElCanvas.height - line.y)`);
-    console.log(`y > gElCanvas.height - (gElCanvas.height - line.y) + (getLineHeight(line));`);
-    console.log(`x < line.x + (getLineWidth(line) / 2)`);
-    console.log(`x > line.x - (getLineWidth(line) / 2)`);
     const line = gMeme.lines.find((line) => {
         return x < line.x + (getLineWidth(line) / 2) &&
             x > line.x - (getLineWidth(line) / 2) &&
@@ -27,6 +15,21 @@ function findClickedLine(x, y) {
             y < gElCanvas.height - (gElCanvas.height - line.y) + (getLineHeight(line)) + 20;
     });
     return line;
+}
+
+function touchEvent() {
+    var hammertime = new Hammer(gElCanvas);
+    hammertime.on('pan', function(ev) {
+        let offsetX = ev.srcEvent.offsetX
+        let offsetY = ev.srcEvent.offsetY
+
+        var currLine = gMeme.lines[gMeme.selectedLineIdx]
+
+        currLine.x = offsetX - (currLine.width / 2)
+        currLine.y = offsetY
+
+        drawImgAndTxt();
+    });
 }
 
 function dragAndDrop() {

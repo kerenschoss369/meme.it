@@ -5,7 +5,8 @@ function onInit() {
     sendElCtx();
     renderImages();
     renderKeywords();
-    dragAndDrop()
+    dragAndDrop();
+    touchEvent();
 }
 
 function onChangeSelected(ev) {
@@ -28,15 +29,6 @@ function onChangeSelected(ev) {
     setTxtLineValue();
 }
 
-// function dragAndDrop() {
-//     console.log('go');
-//     mouseEvents();
-//     setInterval(function() {
-//         // _ResetCanvas();
-//         // _DrawImage();
-//         drawImgAndTxt();
-//     }, 1000 / 30);
-// }
 
 function mouseEvents() {
     var elCanvas = document.querySelector('.canvas');
@@ -49,8 +41,6 @@ function mouseEvents() {
         var mouseY = e.pageY - this.offsetTop;
         var lineWidth = getLineWidth();
         var lineHeight = getLineHeight();
-
-        console.log(`mouseX:${mouseX}, mouseY:${mouseY}, currentX:${currentX}, currentY:${currentY}, lineWidth:${lineWidth}, lineHeight:${lineHeight}`);
 
         if (mouseX >= (currentX - (lineWidth)) &&
             mouseX <= (currentX + (lineWidth)) &&
@@ -65,8 +55,6 @@ function mouseEvents() {
         if (isLineDraggable()) {
             currentX = e.offsetX + (lineWidth / 2);
             currentY = e.offsetY + lineHeight * 2;
-            // currentX = e.pageX - 50;
-            // currentY = e.pageY - 50;
             setLineX(currentX);
             setLineY(currentY);
         }
@@ -120,7 +108,6 @@ function onChooseImg(id) {
     document.querySelector('.meme-editor-container').classList.add('flex');
     sendElImageId(id);
     setTxtLineValue();
-    // dragAndDrop();
 }
 
 function onMoveLine(num) {
@@ -139,7 +126,6 @@ function onSwitchSelectedLine() {
     setTxtLineValue();
     var value = getLineTxt();
     document.querySelector('.txt-line').value = value;
-    // dragAndDrop();
 }
 
 function onAddLine() {
