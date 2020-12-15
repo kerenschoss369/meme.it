@@ -2,12 +2,14 @@
     box-sizing: border-box;
 }
 
+
 /* MAIN COLORS */
 
 :root {
     --darkGrey: #3d3d3d;
     --lightGrey: #cfcfcf;
 }
+
 
 /* FONTS */
 
@@ -21,10 +23,6 @@
     src: url(fonts/Lato-Regular.ttf);
 }
 
-@font-face {
-    font-family: ComicSansMS;
-    src: url(fonts/Comic\ Sans\ MS.ttf);
-}
 
 /* LAYOUT */
 
@@ -33,12 +31,13 @@
     margin: 0 auto;
 }
 
+
 /* BASICS */
 
 body {
     font-family: Impact;
     margin: 0;
-    background-color: var(--lightGrey);
+    /* background-color: var(--lightGrey); */
 }
 
 button {
@@ -47,7 +46,12 @@ button {
     outline: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 0;
     font-weight: normal;
 }
@@ -61,6 +65,7 @@ img {
     width: 100%;
     cursor: pointer;
 }
+
 
 /* HEADER */
 
@@ -80,6 +85,7 @@ img {
 .logo {
     font-family: Impact;
     cursor: pointer;
+    margin-left: 15px;
 }
 
 .navbar-container:nth-child(2) {
@@ -103,6 +109,7 @@ img {
     -webkit-text-fill-color: #bbbbbb;
 }
 
+
 /* GALLERY */
 
 .main-gallery {
@@ -113,17 +120,6 @@ img {
     margin: 30px 0;
 }
 
-.upload-img-btn {
-    color: black;
-    background-color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    font-family: Lato;
-    padding: 8px;
-    transition: .3s;
-    font-weight: bold;
-}
-
 .keyword {
     cursor: pointer;
     margin-right: 30px;
@@ -132,19 +128,11 @@ img {
 }
 
 .keywords-container {
-    margin-bottom: 30px;
+    margin: 30px;
 }
 
 .keyword:hover {
-    color: #555555;
-}
-
-.upload-img-btn:hover {
-    background-color: #a8a8a8;
-}
-
-.upload-choose-title {
-    margin-bottom: 20px;
+    color: #666666;
 }
 
 .stroke-txt.gallery-title {
@@ -182,6 +170,7 @@ img {
     width: 100%;
 }
 
+
 /* MEME EDITOR */
 
 .meme-editor-container {
@@ -193,17 +182,16 @@ img {
 .canvas {
     border: 1px solid black;
     margin-right: 30px;
-    width: 50vw;
-    /* max-height:100vh;; */
+    /* width: 50vw; */
 }
 
 .tools-container {
-    margin: 15px;
+    /* margin: 30px; */
     color: #000000;
     font-weight: bold;
     padding: 15px;
     border-radius: 10px;
-    border: 5px solid var(--darkGrey);
+    border: 5px solid black;
     background-color: var(--lightGrey);
 }
 
@@ -216,6 +204,21 @@ img {
     height: 25px;
     width: 25px;
     margin-right: 10px;
+}
+
+.txt-line {
+    padding: 8px;
+    font-size: 11px;
+    font-family: Lato;
+    font-weight: bold;
+    border-width: 4px;
+    border-color: #000000;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.txt-line:focus {
+    outline: none;
 }
 
 .select-container {
@@ -253,21 +256,6 @@ img {
     -webkit-transform: rotate(45deg);
 }
 
-.txt-line {
-    padding: 8px;
-    font-size: 11px;
-    font-family: Lato;
-    font-weight: bold;
-    border-width: 4px;
-    border-color: #000000;
-    border-radius: 10px;
-    width: 100%;
-}
-
-.txt-line:focus {
-    outline: none;
-}
-
 .change-color-title {
     margin-right: 15px;
 }
@@ -300,10 +288,11 @@ img {
     width: 100%;
 }
 
+
 /* FOOTER */
 
 .main-footer {
-    padding: 20px 0;
+    padding: 8px 0;
     background-color: var(--darkGrey);
     width: 100%;
     position: fixed;
@@ -311,15 +300,16 @@ img {
 }
 
 .copyright {
+    font-size: 8px;
     font-family: Lato;
     color: #cacaca;
-    font-size: 12px;
 }
 
 .bottom-logo {
-    font-size: 24px;
+    font-size: 15px;
     margin-bottom: 10px;
 }
+
 
 /* MEDIA QUERIES */
 
@@ -333,9 +323,6 @@ img {
 @media (max-width: 600px) {
     .main-header {
         z-index: 998;
-    }
-    .logo {
-        margin-left: 15px;
     }
     .logo-navbar-container {
         display: flex;
@@ -384,7 +371,7 @@ img {
     }
     .tools-container {
         width: 70vw;
-        margin-right: 0;
+        margin: 20px 0;
     }
     .close-menu {
         margin: 30px 0;
@@ -408,10 +395,6 @@ img {
         color: white;
         size: 16px;
     }
-    /* .gallery-column {
-        flex: 100%;
-        max-width: 100%;
-    } */
     .meme-editor-container {
         flex-direction: column;
     }
@@ -419,6 +402,7 @@ img {
         flex-wrap: wrap;
     }
 }
+
 
 /* HELPERS */
 
@@ -429,7 +413,6 @@ img {
 .stroke-txt {
     color: black;
     -webkit-text-fill-color: rgb(255, 255, 255);
-    /* Will override color (regardless of order) */
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
 }
@@ -469,6 +452,7 @@ img {
 .block {
     display: block;
 }
+
 
 /* FLEX HELPERS */
 

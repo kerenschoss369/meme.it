@@ -18,18 +18,18 @@ function renderImages() {
 
 }
 
-function renderKeywords(){
-    var keywordsHtml='';
-    var keywords= getKeywordsForDisplay();
+function renderKeywords() {
+    var keywordsHtml = '';
+    var keywords = getKeywordsForDisplay();
     for (const [key, value] of Object.entries(keywords)) {
-        var fontSize= value*5;
-        if (value<3) fontSize=20;
-        keywordsHtml+=`<p class="keyword" onClick=onFilterChange('${key}') style="font-size:${fontSize}px;">${key}</p>`;
-      }
-    document.querySelector('.keywords-container').innerHTML=keywordsHtml;
+        var fontSize = value * 5;
+        if (value < 3) fontSize = 20;
+        keywordsHtml += `<p class="keyword" onClick=onFilterChange('${key}') style="font-size:${fontSize}px;">${key}</p>`;
+    }
+    document.querySelector('.keywords-container').innerHTML = keywordsHtml;
 }
 
-function onFilterChange(key){
+function onFilterChange(key) {
     filterChange(key);
     renderImages();
 }

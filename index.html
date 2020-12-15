@@ -17,7 +17,8 @@
             </div>
             <ul class="navbar-container clean-list flex stroke-txt">
                 <button class="stroke-txt close-menu" onclick="onClickMenuBtn()">x</button>
-                <li><a class="stroke-txt navbar-btn  flex align-center" href="#" onclick="onClickGallery()">Gallery</a></li>
+                <li><a class="stroke-txt navbar-btn  flex align-center" href="#" onclick="onClickGallery()">Gallery</a>
+                </li>
                 <li><a class="stroke-txt navbar-btn flex align-center" href="#">Memes</a></li>
                 <li><a class="stroke-txt navbar-btn flex align-center" href="#">About</a></li>
             </ul>
@@ -26,25 +27,18 @@
     </header>
     <!-- GALLERY -->
     <main class="main-gallery container">
-        <section class="upload-photo-container flex column align-center">
-            <h2 class="upload-choose-title stroke-txt gallery-title">Select Your Own Pic</h2>
-            <input type="file" id="image" onchange="onUploadImg(event)" class="d-none" />
-            <label class="upload-img-btn" for="image">Select file</label>
-        </section>
         <section class="title-gallery-container flex column align-center">
-            <h2 class=" upload-choose-title stroke-txt gallery-title center-text">Or Maybe Choose One from Our Gallery</h2>
             <div class="keywords-container flex justify-center align-center"></div>
             <div class="gallery-container flex"></div>
         </section>
     </main>
 
     <!-- MEME EDITOR -->
-    <main class="meme-editor-container container d-none flex justify-center">
+    <main class="meme-editor-container container d-none justify-center">
         <section class="canvas-container">
-            <!-- <img class="d-none bg-img" src="" alt="img-bg" /> -->
-            <canvas class="canvas" width="800px" height="800px">
+            <canvas class="canvas" onmousedown="onChangeSelected(event)">
                 Your browser does not support the canvas tag.
-                </canvas>
+            </canvas>
         </section>
         <aside class="tools-container">
             <div class="tools-row">
@@ -69,13 +63,13 @@
                     <option value="Impact">Impact</option>
                     <option value="Arial">Arial</option>
                     <option value="David">David</option>
-                    <option value="ComicSansMS">Comic Sans MS</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
                     <option value="Cooper Black">Cooper Black</option>
                     <option value="Century Gothic">Century Gothic</option>
                     <option value="Segoe UI Black">Segoe UI Black</option>
                     <option value="Showcard Gothic">Showcard Gothic</option>
-                  </select>
-                  <div class="select_arrow"></div>
+                </select>
+                <div class="select_arrow"></div>
             </div>
             <div class="tools-row flex column justify-center ">
                 <div class="flex justify-center">
@@ -88,18 +82,18 @@
                 </div>
             </div>
             <div class="tools-row">
-            <form class="share-form flex column align-center justify-center space-between" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
-                <input class="d-none" name="img" id="imgData" type="hidden" />
-                <button class="btn publish-btn" type="submit">Publish</button>
-                <a href="#" class="share-download-btn btn center-text" onmousedown="onDrawForDownLoad()" onclick="onDownloadImg(this)" onmouseup="onDrawAfterDownload()" download="my-img.jpg">Download</a>
-                <div class="share-container"></div>
-            </form>
-        </div>
+                <form class="share-form flex column align-center justify-center space-between" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                    <input class="d-none" name="img" id="imgData" type="hidden" />
+                    <button class="btn publish-btn" type="submit">Publish</button>
+                    <a href="#" class="share-download-btn btn center-text" onmousedown="onDrawForDownLoad()" onclick="onDownloadImg(this)" onmouseup="onDrawAfterDownload()" download="my-img.jpg">Download</a>
+                    <div class="share-container"></div>
+                </form>
+            </div>
         </aside>
     </main>
-
-
-    <!-- FOOTER -->
+    <!-- MEMES -->
+    <!-- <main class="memes-container" { } -->
+    <!--FOOTER-->
     <footer class="main-footer flex column space-between align-center">
         <h3 class="logo stroke-txt bottom-logo">MEME.IT</h3>
         <small class="copyright">© 2020 Keren Schoss - All Rights Reserved</small>

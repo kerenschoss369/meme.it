@@ -5,6 +5,79 @@ function onInit() {
     sendElCtx();
     renderImages();
     renderKeywords();
+    dragAndDrop()
+}
+
+function onChangeSelected(ev) {
+    const offsetX = ev.offsetX;
+    const offsetY = ev.offsetY;
+
+    var selectedLine = findClickedLine(offsetX, offsetY)
+    if (!selectedLine) return;
+    gIsTxt = true;
+
+    const lines = getLines();
+    var selectedLineIdx = lines.findIndex(line => {
+        return line.id === selectedLine.id;
+    })
+
+    let meme = getMeme();
+
+    meme.selectedLineIdx = selectedLineIdx;
+    drawImgAndTxt(meme.selectedImgId);
+    setTxtLineValue();
+}
+
+// function dragAndDrop() {
+//     console.log('go');
+//     mouseEvents();
+//     setInterval(function() {
+//         // _ResetCanvas();
+//         // _DrawImage();
+//         drawImgAndTxt();
+//     }, 1000 / 30);
+// }
+
+function mouseEvents() {
+    var elCanvas = document.querySelector('.canvas');
+    var currentX = getLineX();
+    currentX = currentX / 2;
+    var currentY = getLineY();
+
+    elCanvas.onmousedown = function(e) {
+        var mouseX = e.pageX - this.offsetLeft;
+        var mouseY = e.pageY - this.offsetTop;
+        var lineWidth = getLineWidth();
+        var lineHeight = getLineHeight();
+
+        console.log(`mouseX:${mouseX}, mouseY:${mouseY}, currentX:${currentX}, currentY:${currentY}, lineWidth:${lineWidth}, lineHeight:${lineHeight}`);
+
+        if (mouseX >= (currentX - (lineWidth)) &&
+            mouseX <= (currentX + (lineWidth)) &&
+            mouseY <= (currentY + (lineHeight))) {
+            setLineDraggble(true);
+        }
+    };
+    elCanvas.onmousemove = function(e) {
+        var lineWidth = getLineWidth();
+        var lineHeight = getLineHeight();
+
+        if (isLineDraggable()) {
+            currentX = e.offsetX + (lineWidth / 2);
+            currentY = e.offsetY + lineHeight * 2;
+            // currentX = e.pageX - 50;
+            // currentY = e.pageY - 50;
+            setLineX(currentX);
+            setLineY(currentY);
+        }
+    };
+    elCanvas.onmouseup = function(e) {
+        setLineDraggble(false);
+
+    };
+    elCanvas.onmouseout = function(e) {
+        setLineDraggble(false);
+    };
 }
 
 function onClickMenuBtn() {
@@ -30,7 +103,7 @@ function sendElImageId(id) {
 function onClickGallery() {
     resetFilter();
     renderImages();
-    document.querySelector('body').style.backgroundColor = '#cfcfcf';
+    // document.querySelector('body').style.backgroundColor = '#cfcfcf';
     var elGallery = document.querySelector('.main-gallery');
     var elEditor = document.querySelector('.meme-editor-container');
     if (elGallery.classList.contains('d-none')) {
@@ -40,21 +113,14 @@ function onClickGallery() {
     }
 }
 
-// function onUploadImg(ev) {
-//     var imgSrc = URL.createObjectURL(ev.target.files[0]);
-//     // console.log(imgSrc);
-//     createImg(imgSrc);
-//     onChooseImg(imgSrc);
-// }
-
 function onChooseImg(id) {
-    document.querySelector('body').style.backgroundColor = 'white';
+    // document.querySelector('body').style.backgroundColor = 'white';
     document.querySelector('.main-gallery').classList.add('d-none');
     document.querySelector('.meme-editor-container').classList.remove('d-none');
     document.querySelector('.meme-editor-container').classList.add('flex');
     sendElImageId(id);
-    changeTxtLinePlacehoder();
-    document.querySelector('.txt-line').value = null;
+    setTxtLineValue();
+    // dragAndDrop();
 }
 
 function onMoveLine(num) {
@@ -70,14 +136,16 @@ function onChangeAlign(side) {
 function onSwitchSelectedLine() {
     switchSelectedLine();
     drawImgAndTxt();
-    changeTxtLinePlacehoder();
-    var placeholderVal = getPlaceholderValue();
-    document.querySelector('.txt-line').value = placeholderVal;
+    setTxtLineValue();
+    var value = getLineTxt();
+    document.querySelector('.txt-line').value = value;
+    // dragAndDrop();
 }
 
 function onAddLine() {
     addLine();
     drawImgAndTxt();
+    document.querySelector('.txt-line').value = 'Text Here';
 }
 
 function onRemoveLine() {
@@ -91,15 +159,14 @@ function onChangeFontSize(num) {
 }
 
 function onChangeText() {
-    // var x = document.getElementById("myInput").value;
     var elTxt = document.querySelector('.txt-line').value;
     changeText(elTxt);
     drawImgAndTxt();
 }
 
-function changeTxtLinePlacehoder() {
-    var placeholderVal = getPlaceholderValue();
-    document.querySelector('.txt-line').placeholder = placeholderVal;
+function setTxtLineValue() {
+    var value = getLineTxt();
+    document.querySelector('.txt-line').value = value;
 }
 
 function onChangeStrokeColor(color) {
@@ -140,7 +207,7 @@ function loadImageFromInput(ev, onImageReady) {
     document.querySelector('.share-btn').innerHTML = ''
     var reader = new FileReader();
 
-    reader.onload = function (event) {
+    reader.onload = function(event) {
         var img = new Image();
         img.onload = onImageReady.bind(null, img)
         img.src = event.target.result;
